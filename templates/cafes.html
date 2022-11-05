@@ -1,0 +1,71 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Wifi List{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}
+
+{% block content %}
+<p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>All Cafes</h1>
+
+	  <table class="table">
+          <!-- This is where you will write the code to render a Bootstrap 
+          Table that contains all the information from the 
+          cafe-data.csv file. -->
+
+
+          <table class="table">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Map URL</th>
+    <th>IMG URL</th>
+    <th>Location</th>
+    <th>Has Power Sockets</th>
+    <th>Has Toilet</th>
+    <th>Has WiFi</th>
+    <th>Can Take Calls</th>
+    <th>Seats</th>
+    <th>Coffee Price</th>
+  </tr>
+  </thead>
+                {% for item in cafes %}
+              <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td><a href={{item.map_url}}> Map Link </a></td>
+              <td><a href={{item.img_url}}> Image Link </a></td>
+              <td>{{item.location}}</td>
+              <td>{{item.has_sockets}}</td>
+              <td>{{item.has_toilet}}</td>
+              <td>{{item.has_wifi}}</td>
+              <td>{{item.can_take_calls}}</td>
+              <td>{{item.seats}}</td>
+              <td>{{item.coffee_price }}</td>
+
+                  {% endfor %}
+
+
+  </tr>
+      </tr>
+
+
+
+
+</table>
+
+      <p><a href="{{url_for('home')}}">Return to index page</a></p>
+
+    </div>
+  </div>
+</div>
+<p>
+{% endblock %}
